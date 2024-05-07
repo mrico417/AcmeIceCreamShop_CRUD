@@ -1,9 +1,17 @@
+// import express and pg
 const express = require('express');
 const pg = require('pg');
+
+// create new client to database with pg
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/acme_ice_cream_shop');
 
+// create and express app for HTTP request
 const app = express();
+
+// prep the app to use response to json request
 app.use(express.json());
+
+// prep the app to use morgan for logging
 app.use(require('morgan')('dev'));
 
 // static routes for deployment only
@@ -11,7 +19,7 @@ app.use(require('morgan')('dev'));
 // app routes
 
 
-
+// create the tables with dummy data and prep the app to list on specific port
 const init = async() => {
 
     try {
